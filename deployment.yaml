@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-demo
+spec:
+  selector:
+    matchLabels:
+      app: aws-demo
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: aws-demo
+    spec:
+      containers:
+        - name: aws-demo
+          image: aws-demo:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
